@@ -67,6 +67,12 @@ app.get('/:shortcode', (req, res, next) => {
     routes.redirecter.shortToLong(req, res)
 })
 
+//redirect short url to long url route
+app.get('/a/404', (req, res, next) => {
+    res.render('404')
+})
+
+
 
 app.listen(port)
 

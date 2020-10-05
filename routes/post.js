@@ -16,7 +16,7 @@ exports.insert = (req, res, baseUrl) => {
                     }
                     if(result){
                         res.status(409).json({
-                            message: `Questo link risulta già trasformato in seguente url <a href='${baseUrl + result.id}'>${baseUrl + result.id}</a>`
+                            message: `Questo link risulta già trasformato in seguente url <a target='_blank' href='${baseUrl + result.id}'>${baseUrl + result.id}</a>`
                         })
                     }else{
                         var data = {
@@ -30,7 +30,7 @@ exports.insert = (req, res, baseUrl) => {
                                 res.status(400).json({message: err.message})
                             }
                             res.status(201).json({
-                                message: `<a href = ${baseUrl + this.lastID}>${baseUrl + this.lastID}</a>`
+                                message: `<a target='_blank' href=${baseUrl + this.lastID}>${baseUrl + this.lastID}</a>`
                             })
                         })
                     }

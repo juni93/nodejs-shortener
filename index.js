@@ -17,6 +17,8 @@ app.use(express.urlencoded({ extended: true}))
 //set views
 app.set('views', './app/views')
 
+const port = process.env.PORT || 8080;
+
 //set main route
 app.get('/', (req, res) => {
     res.render('index')
@@ -35,7 +37,8 @@ app.post('/verify', (req, res) => {
 })
 
 //set post view
-const baseUrl = process.env.LOCAL_BASE_URL
+//const baseUrl = process.env.LOCAL_BASE_URL
+const baseUrl = process.env.PROD_BASE_URL
 app.post('/', async (req, res) => {
     //verify google recaptcha
     const token = req.body.data.recaptcha
@@ -65,5 +68,5 @@ app.get('/:shortcode', (req, res, next) => {
 })
 
 
-app.listen(process.env.LOCAL_PORT)
+app.listen(port)
 

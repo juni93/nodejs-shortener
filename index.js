@@ -43,7 +43,7 @@ app.post('/', async (req, res) => {
     //verify google recaptcha
     const token = req.body.data.recaptcha
     if(token === undefined || token === '' || token === null){
-        return res.json({'message': 'Qualcosa non è andato a buon fine'})
+        return res.status(422).json({'message': 'Qualcosa non è andato a buon fine'})
     }
     secKey = process.env.RECAPTCHA_V3_SECRET
     const url = `https://www.google.com/recaptcha/api/siteverify?secret=${secKey}&response=${token}`;
